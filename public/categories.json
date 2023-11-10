@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/pLHmRhs/p.png",
+      "title": "Programming"
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/Tr2XVdt/w.webp",
+      "title": "Web Development"
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/qJVzYk9/apd.jpg",
+      "title": "Android App Development"
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/VHBSrNH/ml.png",
+      "title": "Machine Learning"
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/0h5vwLb/ds.jpg",
+      "title": "Data Science"
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/Rzg7Ty3/ios.jpg",
+      "title": "iOS"
+    }
+  ]
+  
