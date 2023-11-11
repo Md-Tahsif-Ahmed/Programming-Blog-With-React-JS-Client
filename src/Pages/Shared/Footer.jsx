@@ -8,7 +8,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
   return (
-    <footer style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+    <footer style={{  width: '100%' }}>
       <Container component="div" maxWidth="" sx={{ backgroundColor: (theme) => theme.palette.primary.main, color: (theme) => theme.palette.primary.contrastText, padding: (theme) => theme.spacing(3, 0) }}>
         <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>

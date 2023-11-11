@@ -13,12 +13,10 @@ const Categories = () => {
     }, []);
 
     return (
-        <Container>
-           <div style={{textAlign: 'center', marginTop: 15}}>
-           <Typography gutterBottom variant="h3" component="div">
+        <Container sx={{marginBottom: 10}}>
+           <h1 style={{textAlign: 'center', marginY: 10}}>
                 Blog Categories
-            </Typography>
-           </div>
+           </h1>
             <Grid container spacing={2}>
                 {
                     cats.map(cat => 

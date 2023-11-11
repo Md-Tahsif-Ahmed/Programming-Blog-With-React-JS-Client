@@ -19,7 +19,8 @@ const NewsLatter = () => {
   };
 
   return (
-    <div>
+    <div style={{marginTop:10}}>
+    <h1 style={{textAlign: 'center', marginTop:10}}>Newsletter</h1>
       <form onSubmit={handleSubscribe}>
         <Container maxWidth="lg">
           <Box display="flex" justifyContent="center" alignItems="center" my={5}>
