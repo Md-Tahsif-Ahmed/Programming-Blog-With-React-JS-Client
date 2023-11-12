@@ -1,0 +1,39 @@
+[
+    {
+      "title": "Python",
+      "image": "https://i.ibb.co/Bn7pbYy/python.webp",
+      "description": "Learn Python programming language.",
+      "category": "Programming"
+    },
+    {
+      "title": "Django",
+      "image": "https://i.ibb.co/2qWZXMh/django.jpg",
+      "description": "A powerful Python web framework.",
+      "category": "Web Development"
+    },
+    {
+      "title": "React Native",
+      "image": "https://i.ibb.co/jfyVz78/rn.jpg",
+      "description": "Build mobile apps with React Native.",
+      "category": "Mobile App Development"
+    },
+    {
+      "title": "NLP",
+      "image": "https://i.ibb.co/JFHTKPV/nlp.jpg",
+      "description": "Natural Language Processing techniques.",
+      "category": "Machine Learning"
+    },
+    {
+      "title": "Data Mining",
+      "image": "https://i.ibb.co/prbHtzC/Data-Mining-Process.png",
+      "description": "Extract valuable insights from data.",
+      "category": "Data Science"
+    },
+    {
+      "title": "iOS Development",
+      "image": "https://i.ibb.co/Wy7SjJX/ioss.jpg",
+      "description": "Create iOS applications with Swift.",
+      "category": "Mobile App Development"
+    }
+  ]
+  
