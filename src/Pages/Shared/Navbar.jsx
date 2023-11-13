@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import { Link } from 'react-router-dom';
 
 const pages = ['Home', 'Add Blog', 'All Blogs', 'Featured Blogs', 'Wishlist'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -114,7 +115,7 @@ function ResponsiveAppBar() {
             Programming Helper
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -122,7 +123,13 @@ function ResponsiveAppBar() {
               >
                 {page}
               </Button>
+            ))} */}
+            {pages.map((page) => (
+              <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Link to={page === 'All Blogs' ? '/all_blogs' : `/${page.toLowerCase().replace(' ', '-')}`}>{page}</Link>
+              </Button>
             ))}
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

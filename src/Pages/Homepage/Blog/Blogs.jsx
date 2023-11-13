@@ -4,7 +4,7 @@ import { Container, Grid } from "@mui/material";
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
     useEffect(()=>{
-    fetch('blog.json')
+    fetch('http://localhost:3000/allblogs')
     .then(res=>res.json())
     .then(data=>setBlogs(data))
   })
