@@ -127,6 +127,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
                 <Link to={page === 'All Blogs' ? '/all_blogs' : `/${page.toLowerCase().replace(' ', '-')}`}>{page}</Link>
+                
               </Button>
             ))}
           </Box>
