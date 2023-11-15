@@ -3,6 +3,7 @@ import { Container, Grid } from '@mui/material';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { useContext } from 'react';
 import Wishlist from './Wishlist';
+import { Helmet } from 'react-helmet-async';
 
 const Wish = () => {
     const {user} = useContext(AuthContext)
@@ -22,6 +23,10 @@ const Wish = () => {
     
       if (error) return 'An error has occurred: ' + error.message;
     return (
+        <div className="">
+            <Helmet>
+                <title>Programming Blog | Wishlist</title>
+            </Helmet>
         <Container sx={{ marginBottom: 10 }}>
       <h1 style={{ textAlign: 'center', marginY: 10 }}>
         Blogs
@@ -35,6 +40,7 @@ const Wish = () => {
 
       </Grid>
     </Container>
+    </div>
   );
     
 };
