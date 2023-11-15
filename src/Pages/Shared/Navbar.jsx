@@ -126,8 +126,16 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
-                <Link to={page === 'All Blogs' ? '/all_blogs' : `/${page.toLowerCase().replace(' ', '-')}`}>{page}</Link>
-                
+                  { page === 'Home' ? (
+                  <Link to="/">{page}</Link>
+                ):
+                   page === 'All Blogs' ? (
+                  <Link to="/all_blogs">{page}</Link>
+                ) : page === 'Featured Blogs' ? (
+                  <Link to="/featured">{page}</Link>
+                ) : page === 'Wishlist' ? (<Link to="/wishlist">{page}</Link>) :(
+                  <Link to={`/${page.toLowerCase().replace(' ', '_')}`}>{page}</Link>
+                )}
               </Button>
             ))}
           </Box>

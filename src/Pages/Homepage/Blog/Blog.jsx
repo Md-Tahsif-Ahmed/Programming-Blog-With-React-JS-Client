@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Blog = ({blog}) => {
     const {image, title, description, category } = blog;
@@ -14,11 +16,14 @@ const Blog = ({blog}) => {
                 <Typography gutterBottom variant="h5" component="div" sx={{textAlign:'center'}}>
                     {title}  
                 </Typography>
-                <CardMedia
-                    sx={{ height: 200 }}
-                    image={image}
-                    title={title}
-                />
+                <CardMedia>
+        <PhotoProvider>
+          <PhotoView src={image}>
+            <img style={{ width: '100%', height: 200}} src={image} title={title} alt={title} />
+          </PhotoView>
+        </PhotoProvider>
+      </CardMedia>
+
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" sx={{textAlign:'center'}}>
                      {category}
