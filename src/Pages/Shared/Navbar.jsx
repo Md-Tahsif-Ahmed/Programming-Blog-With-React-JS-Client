@@ -129,7 +129,9 @@ function ResponsiveAppBar() {
                   { page === 'Home' ? (
                   <Link to="/">{page}</Link>
                 ):
-                   page === 'All Blogs' ? (
+                   page === 'Add Blog' ? (
+                  <Link to="/add_blog">{page}</Link>
+                ) : page === 'All Blogs' ? (
                   <Link to="/all_blogs">{page}</Link>
                 ) : page === 'Featured Blogs' ? (
                   <Link to="/featured">{page}</Link>
