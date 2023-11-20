@@ -7,6 +7,7 @@ import Register from "../Pages/Auth/Register";
 import Wish from "../Pages/Wishlist/Wish";
 import Featured from "../Pages/FeaturedBlog/Featured";
 import AddBlogs from "../Pages/AddBlogs";
+import Details from "../Pages/Details";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -40,7 +41,13 @@ const router = createBrowserRouter([
         {
           path: '/featured',
           element: <Featured></Featured>,
+        },
+        {
+          path: '/details/:id',
+          element: <Details></Details>,
+          loader: ()=> fetch('http://localhost:3000/allblogs/'),
         }
+
       ]
     },
   ]);

@@ -9,10 +9,11 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { useContext } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { Link } from 'react-router-dom';
 
 const ABlog = ({ blog }) => {
   const { user } = useContext(AuthContext);
-  const { image, title, description, category } = blog;
+  const {_id, image, title, short, category } = blog;
 
   const addWishlist = () => {
     console.log('add');
@@ -38,6 +39,17 @@ const ABlog = ({ blog }) => {
       });
   };
 
+  const handleDetails = ()=>{
+    fetch(`http://localhost:3000/allblogs/${_id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(blog),
+    })
+
+  }
+
   
   return (
     <Card sx={{ maxWidth: 400}}>
@@ -58,12 +70,15 @@ const ABlog = ({ blog }) => {
           {category}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {short}
         </Typography>
       </CardContent>
 
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button size="small">Details</Button>
+      <Link to={`/details/${_id}`}>
+      <Button onClick={()=> handleDetails(_id)} size="small">Details</Button>
+      </Link>
+        
         <Button onClick={() => addWishlist(blog)} size="small">
           Wishlist
         </Button>

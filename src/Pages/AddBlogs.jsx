@@ -1,14 +1,17 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
- 
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const AddBlogs = () => {
   const navigate = useNavigate();
@@ -21,14 +24,15 @@ const AddBlogs = () => {
     const short = e.target.short.value;
     const long = e.target.long.value;
     const time = e.target.time.value;
+    const date = e.target.date.value;
 
-    const blog = { title, image, categories, short, long, time };
+    const blog = { title, image, categories, short, long, time, date };
 
     try {
-      const response = await fetch('http://localhost:3000/allblogs', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/allblogs", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(blog),
       });
@@ -39,9 +43,17 @@ const AddBlogs = () => {
 
       const data = await response.json();
       console.log("Data:", data);
+      if(data.insertedId){
+        Swal.fire({
+            title: 'Success!',
+            text: 'Blog Successfully Added',
+            icon: 'success',
+            confirmButtonText: 'done'
+          })
+    }
       // Handle response from the server as needed
     } catch (error) {
-      console.error('An error occurred:', error.message);
+      console.error("An error occurred:", error.message);
     }
   };
 
@@ -71,22 +83,25 @@ const AddBlogs = () => {
               margin="normal"
               required
             />
-            <TextField
-              label="Categories"
-              name="categories"
-              select
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              required
-            >
-              <option value="Programming">Programming</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Android App">Android App</option>
-              <option value="Machine Learning">Machine Learning</option>
-              <option value="Data Science">Data Science</option>
-              <option value="iOS">iOS</option>
-            </TextField>
+            <FormControl fullWidth variant="outlined" margin="normal" required>
+              <InputLabel id="categories-label">Categories</InputLabel>
+              <Select
+                labelId="categories-label"
+                label="Categories"
+                name="categories"
+                defaultValue=""
+              >
+                <MenuItem value="" disabled>
+                  Select a category
+                </MenuItem>
+                <MenuItem value="Programming">Programming</MenuItem>
+                <MenuItem value="Web Development">Web Development</MenuItem>
+                <MenuItem value="Android App">Android App</MenuItem>
+                <MenuItem value="Machine Learning">Machine Learning</MenuItem>
+                <MenuItem value="Data Science">Data Science</MenuItem>
+                <MenuItem value="iOS">iOS</MenuItem>
+              </Select>
+            </FormControl>
             <TextField
               label="Short Description"
               name="short"
@@ -114,7 +129,15 @@ const AddBlogs = () => {
               margin="normal"
               required
             />
-
+            <TextField
+              label="Date"
+              name="date"
+              type="date"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              required
+            />
             <Button
               type="submit"
               variant="contained"

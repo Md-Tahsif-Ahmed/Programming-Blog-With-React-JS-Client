@@ -16,7 +16,7 @@ const Blogs = () => {
             </h1>
                 <Grid container spacing={2}>
                     {
-                        blogs.map(blog=> <Grid item xs={4} key={blog.id}>
+                        blogs.slice(0, 6).map(blog=> <Grid item xs={4} key={blog.id}>
                             <Blog  blog={blog}></Blog>
                             </Grid>)
                     }
