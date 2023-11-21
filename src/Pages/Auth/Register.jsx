@@ -27,7 +27,10 @@ const Register = () => {
       toast("Do not have a capital letter");
     } else if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
       toast("Do not have a special character");
-    } else {
+    } else if(!/[0-9]/.test(password)){
+      toast("Do not have a Numeric Number");
+    }
+    else {
       createUser(name, photo, email, password)
         .then((result) => {
           console.log("User registered:", result.user);

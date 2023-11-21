@@ -1,8 +1,8 @@
- 
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/system';
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box'
+import Box from '@mui/material/Box';
+import { motion } from 'framer-motion';
 
 const BannerContainer = styled(Paper)(({ theme }) => ({
   position: 'relative',
@@ -24,20 +24,25 @@ const BannerText = styled('div')(({ theme }) => ({
   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', // Add a text shadow if desired
 }));
 
-function BannerSection() {
+const BannerSection = () => {
   return (
-  <Container maxWidth="lg">
-  <Box mx="auto" mt={4}>
-    <BannerContainer>
-        <BannerText>
-            <h1>Destination Pro of Programming</h1>
-            <p>Lets, learn and practice core Concept of programming</p>
-        </BannerText>
-        </BannerContainer>
-  </Box>
-
-  </Container>
+    <Container maxWidth="lg">
+      <Box mx="auto" mt={4}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <BannerContainer>
+            <BannerText>
+              <h1>Destination Pro of Programming</h1>
+              <p>Lets, learn and practice core Concept of programming</p>
+            </BannerText>
+          </BannerContainer>
+        </motion.div>
+      </Box>
+    </Container>
   );
-}
+};
 
 export default BannerSection;

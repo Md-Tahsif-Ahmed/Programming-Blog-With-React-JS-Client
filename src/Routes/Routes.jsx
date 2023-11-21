@@ -9,6 +9,7 @@ import Featured from "../Pages/FeaturedBlog/Featured";
 import AddBlogs from "../Pages/AddBlogs";
 import Details from "../Pages/Details";
 import UpdateBlog from "../Pages/UpdateBlog";
+import PrivateRoutes from "../Routes/PrivateRoutes";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/add_blog',
-          element: <AddBlogs></AddBlogs>,
+          element: <PrivateRoutes><AddBlogs></AddBlogs></PrivateRoutes>,
         },
         {
             path: '/all_blogs/',
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/update/:id',
-          element: <UpdateBlog></UpdateBlog>,
+          element: <PrivateRoutes><UpdateBlog></UpdateBlog></PrivateRoutes>,
           loader: ()=> fetch('http://localhost:3000/allblogs/'),
         }
 
