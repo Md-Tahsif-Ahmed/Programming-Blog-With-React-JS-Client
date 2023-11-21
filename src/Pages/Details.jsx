@@ -9,12 +9,13 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { Fullscreen } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Details = () => {
     const { id } = useParams();
     const blogs = useLoaderData();
     const blog = blogs.find((b) => b._id === id);
-    const { title, image, short, long, time, categories, date } = blog;
+    const {_id, title, image, short, long, time, categories, date } = blog;
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', paddingTop: '64px' }}>
@@ -48,7 +49,7 @@ const Details = () => {
                 </CardContent>
 
                 <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Button size="small">Update</Button>
+                    <Link to={`/update/${_id}`}><Button size="small">Update</Button></Link>
                     <Button size="small">
                         Wishlist
                     </Button>
