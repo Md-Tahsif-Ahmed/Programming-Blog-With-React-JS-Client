@@ -20,13 +20,13 @@ const AddBlogs = () => {
     e.preventDefault();
     const title = e.target.title.value;
     const image = e.target.image.value;
-    const categories = e.target.categories.value;
+    const category = e.target.categories.value;
     const short = e.target.short.value;
     const long = e.target.long.value;
     const time = e.target.time.value;
     const date = e.target.date.value;
 
-    const blog = { title, image, categories, short, long, time, date };
+    const blog = { title, image, category, short, long, time, date };
 
     try {
       const response = await fetch("http://localhost:3000/allblogs", {
@@ -100,6 +100,7 @@ const AddBlogs = () => {
                 <MenuItem value="Machine Learning">Machine Learning</MenuItem>
                 <MenuItem value="Data Science">Data Science</MenuItem>
                 <MenuItem value="iOS">iOS</MenuItem>
+                <MenuItem value="iOS">Mobile App Development</MenuItem>
               </Select>
             </FormControl>
             <TextField
