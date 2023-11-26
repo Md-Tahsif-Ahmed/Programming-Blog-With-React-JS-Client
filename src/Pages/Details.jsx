@@ -18,18 +18,18 @@ import { useQuery } from '@tanstack/react-query';
 import ShowComment from './ShowComment';
 
 const Details = () => {
-  const { user } = useContext(AuthContext);
-  const { id } = useParams();
-  const blogs = useLoaderData();
-  const blog = blogs.find((b) => b._id === id);
-  const { _id, title, image, short, long, time, categories, date, email } = blog;
-
-  const handleComment = async (e) => {
-    e.preventDefault();
-    const comment = e.target.comment.value;
-    const name = user.displayName;
-    const photo = user.photoURL;
-    const blog_id = _id;
+    const { user } = useContext(AuthContext);
+    const { id } = useParams();
+    const blogs = useLoaderData();
+    const blog = blogs.find((b) => b._id === id);
+    const { _id, title, image, short, long, time, categories, date, email } = blog;
+  
+    const handleComment = async (e) => {
+      e.preventDefault();
+      const comment = e.target.comment.value;
+      const name = user?.displayName;
+      const photo = user?.photoURL;
+      const blog_id = _id;
 
     console.log(comment, name, photo);
 
