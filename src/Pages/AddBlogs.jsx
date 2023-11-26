@@ -12,9 +12,11 @@ import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
 const AddBlogs = () => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const addBlog = async (e) => {
     e.preventDefault();
@@ -25,8 +27,9 @@ const AddBlogs = () => {
     const long = e.target.long.value;
     const time = e.target.time.value;
     const date = e.target.date.value;
+    const email = user.email;
 
-    const blog = { title, image, category, short, long, time, date };
+    const blog = { title, image, category, short, long, time, date, email };
 
     try {
       const response = await fetch("http://localhost:3000/allblogs", {

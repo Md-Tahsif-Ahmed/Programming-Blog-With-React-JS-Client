@@ -14,23 +14,26 @@ import Textarea from '@mui/joy/Textarea';
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
+import ShowComment from './ShowComment';
 
 const Details = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const blogs = useLoaderData();
   const blog = blogs.find((b) => b._id === id);
-  const { _id, title, image, short, long, time, categories, date } = blog;
+  const { _id, title, image, short, long, time, categories, date, email } = blog;
 
   const handleComment = async (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
     const name = user.displayName;
     const photo = user.photoURL;
+    const blog_id = _id;
 
     console.log(comment, name, photo);
 
-    const com = { comment, name, photo };
+    const com = { comment, name, photo, blog_id };
 
     try {
       const response = await fetch('http://localhost:3000/comments', {
@@ -60,11 +63,27 @@ const Details = () => {
       console.error('An error occurred:', error.message);
     }
   };
+//   for comment section
+  const { isPending, error, data: comments } = useQuery({
+    queryKey: ['comments'],
+    queryFn: () =>
+      fetch('http://localhost:3000/comments')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          return data;
+        }),
+  });
+
+  if (isPending) return 'Loading...';
+
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', paddingTop: '64px' }}>
       {/* Add the style to align the card center */}
-      <Card sx={{ width: '50vw' }}>
+    <div>
+    <Card sx={{ width: '50vw' }}>
         <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center' }}>
           {title}
         </Typography>
@@ -99,13 +118,39 @@ const Details = () => {
           <Button size="small">Wishlist</Button>
         </CardActions>
       </Card>
+    </div>
       {/* Add the style to create space for the footer at the bottom */}
       <div style={{ flex: '1' }}></div>
-
-      <form onSubmit={handleComment}>
-        <Textarea placeholder="Try to submit with no text!" name="comment" required sx={{ mb: 1 }} />
-        <Button type="submit">Submit</Button>
-      </form>
+<div >
+    
+{    
+      (email === user.email) ? (
+        <Typography variant="h6" gutterBottom>
+            Cannot comment on own blog!
+        </Typography>
+        ) : (
+          
+           <form onSubmit={handleComment} style={{ display: 'flex', marginTop: 16, justifyContent: 'start' }}>
+            <Textarea placeholder="Try to comment" name="comment" required sx={{ mr: 2 }} />
+            <Button type="submit">Comment</Button>
+            </form>
+        )
+}
+    <div style={{ marginTop: '16px', marginLeft: '6px' }}>
+          <Typography variant="h6" gutterBottom>
+            Comments:
+          </Typography>
+          {comments.length === 0 ? (
+            <p>No comments yet.</p>
+          ) : (
+            comments
+              .filter((comment) => comment.blog_id === _id)
+              .map((comment) => (
+                <ShowComment key={comment._id} comment={comment} />
+              ))
+          )}
+        </div>
+</div>
     </div>
   );
 };
