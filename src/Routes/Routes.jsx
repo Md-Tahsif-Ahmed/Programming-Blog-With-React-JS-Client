@@ -10,10 +10,12 @@ import AddBlogs from "../Pages/AddBlogs";
 import Details from "../Pages/Details";
 import UpdateBlog from "../Pages/UpdateBlog";
 import PrivateRoutes from "../Routes/PrivateRoutes";
+import ErrorPage from "../Pages/ErrorPage";
 const router = createBrowserRouter([
     {
       path: "/",
       element: <App></App>,
+      errorElement: <ErrorPage></ErrorPage>;
       children: [
         {
             path: '/',
