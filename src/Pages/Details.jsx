@@ -112,9 +112,11 @@ const Details = () => {
         </CardContent>
 
         <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Link to={`/update/${_id}`}>
+        <Link to={`/update/${_id}`}>
+            {email === user?.email && (
             <Button size="small">Update</Button>
-          </Link>
+            )}
+        </Link>
           <Button size="small">Wishlist</Button>
         </CardActions>
       </Card>
