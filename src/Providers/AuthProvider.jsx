@@ -73,7 +73,7 @@ const signInUser = (email, password) => {
       // if user exit then issue token
        
       if (currentUser) {
-        axios.post('http://localhost:3000/jwt', loggedUser, {
+        axios.post('https://programming-blog-server-three.vercel.app/jwt', loggedUser, {
           withCredentials: true
         })
         .then(res => {
@@ -84,7 +84,7 @@ const signInUser = (email, password) => {
         });
       }
       else{
-        axios.post('http://localhost:3000/logout', loggedUser, {
+        axios.post('https://programming-blog-server-three.vercel.app/logout', loggedUser, {
           withCredentials: true
         })
         .then(res=>{console.log(res.data)})

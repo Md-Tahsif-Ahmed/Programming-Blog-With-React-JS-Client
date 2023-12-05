@@ -10,7 +10,7 @@ const Wish = () => {
   const { isPending, error, data: blogs } = useQuery({
     queryKey: ['blogs'],
     queryFn: () =>
-      fetch(`http://localhost:3000/wishlist/${user.email}`)
+      fetch(`https://programming-blog-server-three.vercel.app/wishlist/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data); // Add this line to check the data

@@ -49,12 +49,12 @@ const router = createBrowserRouter([
         {
           path: '/details/:id',
           element: <Details></Details>,
-          loader: ()=> fetch('http://localhost:3000/allblogs/'),
+          loader: ()=> fetch('https://programming-blog-server-three.vercel.app/allblogs/'),
         },
         {
           path: '/update/:id',
           element: <PrivateRoutes><UpdateBlog></UpdateBlog></PrivateRoutes>,
-          loader: ()=> fetch('http://localhost:3000/allblogs/'),
+          loader: ()=> fetch('https://programming-blog-server-three.vercel.app/allblogs/'),
         }
 
       ]

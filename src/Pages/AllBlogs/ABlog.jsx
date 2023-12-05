@@ -20,7 +20,7 @@ const ABlog = ({ blog }) => {
     blog.email = user.email;
     console.log('All value: ', blog);
     // send data to server
-    fetch(`http://localhost:3000/wishlist/${blog.email}`, {
+    fetch(`https://programming-blog-server-three.vercel.app/wishlist/${blog.email}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const ABlog = ({ blog }) => {
   };
 
   const handleDetails = () => {
-    fetch(`http://localhost:3000/allblogs/${_id}`, {
+    fetch(`https://programming-blog-server-three.vercel.app/allblogs/${_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

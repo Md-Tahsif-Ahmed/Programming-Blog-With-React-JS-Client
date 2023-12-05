@@ -10,7 +10,7 @@ const AllBlogs = () => {
   const { isPending, error, data: blogs } = useQuery({
     queryKey: ['blogs'],
     queryFn: () =>
-      fetch('http://localhost:3000/allblogs')
+      fetch('https://programming-blog-server-three.vercel.app/allblogs')
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

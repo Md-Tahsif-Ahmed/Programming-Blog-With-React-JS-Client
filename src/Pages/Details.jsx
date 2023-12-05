@@ -36,7 +36,7 @@ const Details = () => {
     const com = { comment, name, photo, blog_id };
 
     try {
-      const response = await fetch('http://localhost:3000/comments', {
+      const response = await fetch('https://programming-blog-server-three.vercel.app/comments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Details = () => {
   const { isPending, error, data: comments } = useQuery({
     queryKey: ['comments'],
     queryFn: () =>
-      fetch('http://localhost:3000/comments')
+      fetch('https://programming-blog-server-three.vercel.app/comments')
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

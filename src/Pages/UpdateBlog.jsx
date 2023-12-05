@@ -32,7 +32,7 @@ const UpdateBlog = () => {
     
         const update = { title, image, category, short, long, time, date };
         // Send data to the server
-        fetch(`http://localhost:3000/allblogs/${_id}`, {
+        fetch(`https://programming-blog-server-three.vercel.app/allblogs/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

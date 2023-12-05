@@ -34,7 +34,7 @@ const AddBlogs = () => {
     const blog = { title, image, category, short, long, time, date, email, owner, owner_profile };
 
     try {
-      const response = await fetch("http://localhost:3000/allblogs", {
+      const response = await fetch("https://programming-blog-server-three.vercel.app/allblogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

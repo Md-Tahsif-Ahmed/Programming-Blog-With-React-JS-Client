@@ -6,7 +6,7 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/allblogs', { credentials: 'include' })
+    fetch('https://programming-blog-server-three.vercel.app/allblogs', { credentials: 'include' })
       .then(res => res.json())
       .then(data => setBlogs(data));
   }, []);
