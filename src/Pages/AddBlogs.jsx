@@ -28,8 +28,10 @@ const AddBlogs = () => {
     const time = e.target.time.value;
     const date = e.target.date.value;
     const email = user.email;
+    const owner = user.displayName;
+    const owner_profile = user.photoURL;
 
-    const blog = { title, image, category, short, long, time, date, email };
+    const blog = { title, image, category, short, long, time, date, email, owner, owner_profile };
 
     try {
       const response = await fetch("http://localhost:3000/allblogs", {

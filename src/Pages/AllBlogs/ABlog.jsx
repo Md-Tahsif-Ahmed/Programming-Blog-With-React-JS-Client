@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 const ABlog = ({ blog }) => {
   const { user } = useContext(AuthContext);
-  const {_id, image, title, short, category } = blog;
+  const { _id, image, title, short, category } = blog;
 
   const addWishlist = () => {
     console.log('add');
@@ -39,20 +39,20 @@ const ABlog = ({ blog }) => {
       });
   };
 
-  const handleDetails = ()=>{
+  const handleDetails = () => {
     fetch(`http://localhost:3000/allblogs/${_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(blog),
-    })
+      // No body for a GET request
+    }).then((response) => {
+      // Handle the response as needed
+    });
+  };
 
-  }
-
-  
   return (
-    <Card sx={{ maxWidth: 400}}>
+    <Card sx={{ maxWidth: 400 }}>
       <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center' }}>
         {title}
       </Typography>
@@ -60,7 +60,7 @@ const ABlog = ({ blog }) => {
       <CardMedia>
         <PhotoProvider>
           <PhotoView src={image}>
-            <img style={{ width: '100%', height: 200}} src={image} title={title} alt={title} />
+            <img style={{ width: '100%', height: 200 }} src={image} title={title} alt={title} />
           </PhotoView>
         </PhotoProvider>
       </CardMedia>
@@ -75,10 +75,12 @@ const ABlog = ({ blog }) => {
       </CardContent>
 
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Link to={`/details/${_id}`}>
-      <Button onClick={()=> handleDetails(_id)} size="small">Details</Button>
-      </Link>
-        
+        <Link to={`/details/${_id}`}>
+          <Button onClick={handleDetails} size="small">
+            Details
+          </Button>
+        </Link>
+
         <Button onClick={() => addWishlist(blog)} size="small">
           Wishlist
         </Button>

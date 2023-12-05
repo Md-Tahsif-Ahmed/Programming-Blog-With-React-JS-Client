@@ -10,6 +10,7 @@ import {
   import { createContext, useEffect, useState } from 'react';
   import auth from '../firebase/firebase.config';
   import { GoogleAuthProvider } from 'firebase/auth';
+  import axios from 'axios';
 
   export const AuthContext = createContext(null);
   const provider = new GoogleAuthProvider();
@@ -64,9 +65,31 @@ const signInUser = (email, password) => {
   // Observed auth state change
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       console.log('current value of the user', currentUser);
       setUser(currentUser);
       setLoading(false);
+      // if user exit then issue token
+       
+      if (currentUser) {
+        axios.post('http://localhost:3000/jwt', loggedUser, {
+          withCredentials: true
+        })
+        .then(res => {
+          console.log('response token', res.data);
+        })
+        .catch(error => {
+          console.error('Error issuing token:', error);
+        });
+      }
+      else{
+        axios.post('http://localhost:3000/logout', loggedUser, {
+          withCredentials: true
+        })
+        .then(res=>{console.log(res.data)})
+      }
+
     });
     return () => {
       unSubscribe();

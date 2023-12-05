@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Category from "./Category";
 import Grid from '@mui/material/Grid';
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 const Categories = () => {
     const [cats, setcat] = useState([]);
+    const theme = useTheme();
+    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
     useEffect(() => {
         fetch('categories.json')
@@ -13,18 +15,16 @@ const Categories = () => {
     }, []);
 
     return (
-        <Container sx={{marginBottom: 10}}>
-           <h1 style={{textAlign: 'center', marginY: 10}}>
+        <Container sx={{ marginBottom: 10 }}>
+            <Typography variant="h4" align="center" sx={{ marginY: 4 }}>
                 Blog Categories
-           </h1>
-            <Grid container spacing={2}>
-                {
-                    cats.map(cat => 
-                        <Grid item xs={2} key={cat.id}>
-                            <Category cat={cat} />
-                        </Grid>
-                    )
-                }
+            </Typography>
+            <Grid container spacing={2} justifyContent="center">
+                {cats.map((cat) => (
+                    <Grid item key={cat.id} xs={6} lg={isLargeScreen ? 2 : 4}>
+                        <Category cat={cat} />
+                    </Grid>
+                ))}
             </Grid>
         </Container>
     );

@@ -8,58 +8,44 @@ import Avatar from '@mui/material/Avatar';
 import a from "../../../assets/a.jpeg";
 import b from "../../../assets/b.jpeg";
 import c from "../../../assets/c.jpg";
-import { Container } from '@mui/material';
-import { blue } from '@mui/material/colors';
+import { Container, Button, Grid } from '@mui/material';
 
 const Author = () => {
-    return (
+    const authors = [
+        { name: 'Rakib Hasan', image: a },
+        { name: 'Tamim Shahriar', image: b },
+        { name: 'Jakir Hasan', image: c }
+    ];
 
-        <Container sx={{marginY: 10}}>
-            <h1 style={{textAlign: 'center'}}>Authors</h1>
-            <Container sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4,}}>
-            <Card sx={{ minWidth: 300 }}>
-                <CardActionArea sx={{ textAlign: 'center',  marginY:2 }}>
-                    <Avatar alt="Cindy Baker" src={a} sx={{ width: 100, height: 100, margin: 'auto' }} />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Rakib Hasan
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            <button style={{backgroundColor: '#1976d2', borderColor:'blue'}}>Views</button>
-                            <button style={{backgroundColor: '#1976d2', borderColor:'blue'}}>Blogs</button>
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-            <Card sx={{ minWidth: 300 }}>
-                <CardActionArea sx={{ textAlign: 'center',  marginY:2  }}>
-                    <Avatar alt="Cindy Baker" src={b} sx={{ width: 100, height: 100, margin: 'auto' }} />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Tamim Shahriar  
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            <button style={{backgroundColor: '#1976d2', borderColor:'blue'}}>Views</button>
-                            <button style={{backgroundColor: '#1976d2', borderColor:'blue'}}>Blogs</button>
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-            <Card sx={{ minWidth: 300 }}>
-                <CardActionArea sx={{ textAlign: 'center', marginY:2  }}>
-                    <Avatar alt="Cindy Baker" src={c} sx={{ width: 100, height: 100, margin: 'auto' }} />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Jakir Hasan
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            <button style={{backgroundColor: '#1976d2', borderColor:'blue'}}>Views</button>
-                            <button style={{backgroundColor: '#1976d2', borderColor:'blue'}}>Blogs</button>
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Container>
+    return (
+        <Container sx={{ marginY: 4 }}>
+            <Typography variant="h3" align="center" gutterBottom>
+                Authors
+            </Typography>
+            <Grid container spacing={2} justifyContent="center">
+                {authors.map((author, index) => (
+                    <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+                        <Card sx={{ minWidth: 300 }}>
+                            <CardActionArea sx={{ textAlign: 'center', marginY: 2 }}>
+                                <Avatar alt={author.name} src={author.image} sx={{ width: 100, height: 100, margin: 'auto' }} />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        {author.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        <Button variant="contained" style={{ backgroundColor: '#1976d2', borderColor: 'blue', marginRight: 1 }}>
+                                            Views
+                                        </Button>
+                                        <Button variant="contained" style={{ backgroundColor: '#1976d2', borderColor: 'blue' }}>
+                                            Blogs
+                                        </Button>
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
         </Container>
     );
 };

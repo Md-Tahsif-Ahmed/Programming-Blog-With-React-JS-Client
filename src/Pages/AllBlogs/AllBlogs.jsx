@@ -45,50 +45,49 @@ const AllBlogs = () => {
         Blogs
       </h1>
 
-    <div style={{display:'flex', justifyContent:'space-between', alignItems: 'center'}}>
-    <FormControl style={{ maxWidth: '300px' }} variant="outlined" margin="normal" required>
-        <InputLabel id="categories-label">Categories</InputLabel>
-        <Select
-          labelId="categories-label"
-          label="Categories"
-          name="categories"
-          value={category}
-          onChange={handleCategoryChange}
-          size="small"
-        >
-          <MenuItem value="all">All Categories</MenuItem>
-          <MenuItem value="Programming">Programming</MenuItem>
-          <MenuItem value="Web Development">Web Development</MenuItem>
-          <MenuItem value="Android App">Android App</MenuItem>
-          <MenuItem value="Machine Learning">Machine Learning</MenuItem>
-          <MenuItem value="Data Science">Data Science</MenuItem>
-          <MenuItem value="iOS">iOS</MenuItem>
-          <MenuItem value="iOS">Mobile App Development</MenuItem>
-        </Select>
-      </FormControl>
-    <form onSubmit={handleSearch} style={{ marginBottom: 2, maxWidth: '300px'}}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <TextField
-            style={{ flex: 1, borderRadius: '5px 0 0 5px', marginRight: 0 }}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+        <FormControl style={{ width: '100%', maxWidth: '300px' }} variant="outlined" margin="normal" required>
+          <InputLabel id="categories-label">Categories</InputLabel>
+          <Select
+            labelId="categories-label"
+            label="Categories"
+            name="categories"
+            value={category}
+            onChange={handleCategoryChange}
             size="small"
-            variant="outlined"
-            placeholder="Search by Title"
-            name="searchInput"
-            value={search}
-            onChange={handleSearch}
-          />
-          <Button type="submit" variant="contained" style={{ borderRadius: '0 5px 5px 0', padding: '8px'}} size="small">
-            Search
-          </Button>
-        </div>
-      </form>
+          >
+            <MenuItem value="all">All Categories</MenuItem>
+            <MenuItem value="Programming">Programming</MenuItem>
+            <MenuItem value="Web Development">Web Development</MenuItem>
+            <MenuItem value="Android App">Android App</MenuItem>
+            <MenuItem value="Machine Learning">Machine Learning</MenuItem>
+            <MenuItem value="Data Science">Data Science</MenuItem>
+            <MenuItem value="iOS">iOS</MenuItem>
+            <MenuItem value="Mobile App Development">Mobile App Development</MenuItem>
+          </Select>
+        </FormControl>
 
-      
-    </div>
+        <form onSubmit={handleSearch} style={{ width: '100%', maxWidth: '300px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+            <TextField
+              style={{ flex: '1', borderRadius: '5px 0 0 5px', marginRight: 0 }}
+              size="small"
+              variant="outlined"
+              placeholder="Search by Title"
+              name="searchInput"
+              value={search}
+              onChange={handleSearch}
+            />
+            <Button type="submit" variant="contained" style={{ borderRadius: '0 5px 5px 0', padding: '8px' }} size="small">
+              Search
+            </Button>
+          </div>
+        </form>
+      </div>
 
       <Grid container spacing={2} style={{ marginTop: 2 }}>
         {filteredBlogs.map((blog) => (
-          <Grid item xs={4} key={blog._id}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={blog._id}>
             <ABlog blog={blog}></ABlog>
           </Grid>
         ))}

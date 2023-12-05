@@ -15,6 +15,13 @@ const BannerContainer = styled(Paper)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
+  padding: theme.spacing(2), // Add padding for better responsiveness
+  [theme.breakpoints.down('sm')]: {
+    height: '300px', // Adjust height for smaller screens
+  },
+  [theme.breakpoints.down('xs')]: {
+    height: '200px', // Adjust height for extra small screens
+  },
 }));
 
 const BannerText = styled('div')(({ theme }) => ({
@@ -22,6 +29,12 @@ const BannerText = styled('div')(({ theme }) => ({
   fontSize: '24px', // Customize the font size
   fontWeight: 'bold', // Customize the font weight
   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', // Add a text shadow if desired
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '20px', // Adjust font size for smaller screens
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '16px', // Adjust font size for extra small screens
+  },
 }));
 
 const BannerSection = () => {
